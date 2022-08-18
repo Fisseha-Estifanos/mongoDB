@@ -4,8 +4,20 @@ var mongoose = require('mongoose');
 console.log(process.env.MONGO_URI)
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
+// create a person mongoose schema
+const personSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  age: { type: Number, require: true },
+  favoriteFoods: [String],
+  height: { type: Number, require: true },
+  wieght: { type: Number, require: true }
+});
 
-let Person;
+// to delete I guess
+// let Person;
+
+// create a person model from the personSchema
+const Person = mongoose.model("Person", personSchema);
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
