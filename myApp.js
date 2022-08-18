@@ -1,11 +1,7 @@
 require('dotenv').config();
 var mongoose = require('mongoose');
 
-console.log(process.env.MONGO_URI)
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-
-// to delete I guess
-// let Person;
 
 // create a person mongoose schema
 const personSchema = new mongoose.Schema({
