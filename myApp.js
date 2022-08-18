@@ -23,7 +23,7 @@ const createAndSavePerson = (done) => {
   // create a new person with the Person model
   var myPerson = new Person({name: 'Fisseha Estifanos',
                             age: 27,
-                            favoriteFodds: ['shiro', 'atkilt', 'fish', 'enera'],
+                            favoriteFoods: ['shiro', 'atkilt', 'asa', 'enjera'],
                             height: 170,
                             wieght: 55});
   // save the document
@@ -34,7 +34,35 @@ const createAndSavePerson = (done) => {
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+  // create an array of people
+  arrayOfPeople = [{name: 'Fisseha Estifanos',
+                    age: 27,
+                    favoriteFoods: ['shiro', 'atkilt', 'asa', 'enjera'],
+                    height: 170,
+                    wieght: 55},
+                   {name: 'Taddesu Libase',
+                    age: 65,
+                    favoriteFoods: ['shiro', 'atkilt', 'asa', 'enjera'],
+                    height: 162,
+                    wieght: 75},
+                   {name: 'Estifanos Senbeta',
+                    age: 75,
+                    favoriteFoods: ['anything', 'everything'],
+                    height: 160,
+                    wieght: 70},
+                   {name: 'Tezerawork Estifanos',
+                    age: 75,
+                    favoriteFoods: ['anything', 'everything'],
+                    height: 160,
+                    wieght: 70}];
+
+  // create and save many people
+  var myArrayOfPeople = function(arrayOfPeople, done) {
+    Person.create(arrayOfPeople, function (err, people) {
+      if (err) return console.log(err);
+      done(null, people);
+    });
+  };
 };
 
 const findPeopleByName = (personName, done) => {
