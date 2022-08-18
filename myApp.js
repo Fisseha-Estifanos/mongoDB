@@ -59,7 +59,8 @@ const createManyPeople = (arrayOfPeople, done) => {
                     age: 75,
                     favoriteFoods: ['anything', 'everything'],
                     height: 160,
-                    weight: 70}];
+                    weight: 70}
+                  ];
 
   // create and save many Person objects as a mongoose document
   var myArrayOfPeople = function(arrayOfPeople, done) {
@@ -78,8 +79,12 @@ const findPeopleByName = (personName, done) => {
   });
 };
 
+// find a person by favorite food
 const findOneByFood = (food, done) => {
-  done(null /*, data*/);
+  Person.findOne({favoriteFoods: food}, function (err, data) {
+    if (err) return console.log(err);
+    done(null, data);
+  });
 };
 
 const findPersonById = (personId, done) => {
