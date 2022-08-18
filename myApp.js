@@ -13,7 +13,7 @@ const personSchema = new mongoose.Schema({
   age: { type: Number, require: true },
   favoriteFoods: [String],
   height: { type: Number, require: true },
-  wieght: { type: Number, require: true }
+  weight: { type: Number, require: true }
 });
 
 // create a person model from the personSchema
@@ -25,7 +25,7 @@ const createAndSavePerson = (done) => {
                             age: 27,
                             favoriteFoods: ['shiro', 'atkilt', 'asa', 'enjera'],
                             height: 170,
-                            wieght: 55});
+                            weight: 55});
   // save the document
   myPerson.save(function(err, data) {
     if (err) return console.error(err);
@@ -39,22 +39,22 @@ const createManyPeople = (arrayOfPeople, done) => {
                     age: 27,
                     favoriteFoods: ['shiro', 'atkilt', 'asa', 'enjera'],
                     height: 170,
-                    wieght: 55},
-                   {name: 'Taddesu Libase',
+                    weight: 55},
+                   {name: 'Taddesu Libasie',
                     age: 65,
                     favoriteFoods: ['shiro', 'atkilt', 'asa', 'enjera'],
                     height: 162,
-                    wieght: 75},
+                    weight: 75},
                    {name: 'Estifanos Senbeta',
                     age: 75,
                     favoriteFoods: ['anything', 'everything'],
                     height: 160,
-                    wieght: 70},
+                    weight: 70},
                    {name: 'Tezerawork Estifanos',
                     age: 75,
                     favoriteFoods: ['anything', 'everything'],
                     height: 160,
-                    wieght: 70}];
+                    weight: 70}];
 
   // create and save many people
   var myArrayOfPeople = function(arrayOfPeople, done) {
