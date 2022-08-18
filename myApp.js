@@ -4,6 +4,9 @@ var mongoose = require('mongoose');
 console.log(process.env.MONGO_URI)
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
+// to delete I guess
+// let Person;
+
 // create a person mongoose schema
 const personSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -13,14 +16,21 @@ const personSchema = new mongoose.Schema({
   wieght: { type: Number, require: true }
 });
 
-// to delete I guess
-// let Person;
-
 // create a person model from the personSchema
 const Person = mongoose.model("Person", personSchema);
 
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  // create a new person with the Person model
+  var myPerson = new Person({name: 'Fisseha Estifanos',
+                            age: 27,
+                            favoriteFodds: ['shiro', 'atkilt', 'fish', 'enera'],
+                            height: 170,
+                            wieght: 55});
+  // save the document
+  myPerson.save(function(err, data) {
+    if (err) return console.error(err);
+    done(null, data);
+  });
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
