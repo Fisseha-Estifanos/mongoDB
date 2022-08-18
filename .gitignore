@@ -1,2 +1,6 @@
+# environment variable relate ignores
 .env
+sample.env
+
+# module related ignores
 node_modules
