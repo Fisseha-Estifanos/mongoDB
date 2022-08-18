@@ -1,7 +1,13 @@
 require('dotenv').config();
 var mongoose = require('mongoose');
 
+// connect with mongoDB using environmental variable
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
+// print out error logs on console
+process.on('warning', (warning) => {
+  console.log(warning.stack);
+});
 
 // create a person mongoose schema
 const personSchema = new mongoose.Schema({
@@ -15,6 +21,7 @@ const personSchema = new mongoose.Schema({
 // create a person model from the personSchema
 const Person = mongoose.model("Person", personSchema);
 
+// create and save a single person object as a mongoose document
 const createAndSavePerson = (done) => {
   // create a new person with the Person model
   var myPerson = new Person({name: 'Fisseha Estifanos',
@@ -22,13 +29,15 @@ const createAndSavePerson = (done) => {
                             favoriteFoods: ['shiro', 'atkilt', 'asa', 'enjera'],
                             height: 170,
                             weight: 55});
-  // save the document
+
+  // save the Person object as a mongoose document
   myPerson.save(function(err, data) {
     if (err) return console.error(err);
     done(null, data);
   });
 };
 
+// create and save multiple person objects as a mongoose document
 const createManyPeople = (arrayOfPeople, done) => {
   // create an array of people
   arrayOfPeople = [{name: 'Fisseha Estifanos',
@@ -52,7 +61,7 @@ const createManyPeople = (arrayOfPeople, done) => {
                     height: 160,
                     weight: 70}];
 
-  // create and save many people
+  // create and save many Person objects as a mongoose document
   var myArrayOfPeople = function(arrayOfPeople, done) {
     Person.create(arrayOfPeople, function (err, people) {
       if (err) return console.log(err);
