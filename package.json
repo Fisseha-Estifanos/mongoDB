@@ -1,7 +1,7 @@
 {
   "name": "fcc-mongo-mongoose-challenges",
   "version": "0.0.1",
-  "description": "A boilerplate project",
+  "description": "A boilerplate project which I used to learn the mongoose frame work, along side nodejs, express and npm. This boilerplate template was produced by freeCodeCamp.",
   "keywords": ["node", "mongoose", "express"],
   "license": "MIT",
   "dependencies": {
